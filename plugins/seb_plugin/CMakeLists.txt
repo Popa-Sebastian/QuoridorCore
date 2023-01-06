@@ -8,6 +8,8 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 add_library(seb-plugin SHARED
 	src/GraphSearch.cpp
 	src/GridGraph.cpp
+	src/SebPlayer.cpp
+	src/PlayerRegistration.cpp
 )
 
 target_include_directories(seb-plugin PUBLIC include)
