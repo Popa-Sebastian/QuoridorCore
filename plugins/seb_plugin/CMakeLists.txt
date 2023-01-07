@@ -10,6 +10,7 @@ add_library(seb-plugin SHARED
 	src/GridGraph.cpp
 	src/SebPlayer.cpp
 	src/PlayerRegistration.cpp
+	src/GameState.cpp
 )
 
 target_include_directories(seb-plugin PUBLIC include)

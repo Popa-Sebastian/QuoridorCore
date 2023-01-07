@@ -3,6 +3,8 @@
 
 #include <thread>
 
+#include "GameState.h"
+
 using namespace qcore::literals;
 using namespace std::chrono_literals;
 
@@ -20,6 +22,16 @@ namespace qplugin
    void SebPlayer::doNextMove()
    {
       LOG_INFO(DOM) << "Player " << (int)getId() << " is thinking..";
+
+      auto id = getId();
+      auto players = getBoardState()->getPlayers(id);
+      auto walls = getBoardState()->getWalls(id);
+      auto game = GameState(players, walls, id);
+
+      game.plot();
+
+      // Simulate more thinking
+      std::this_thread::sleep_for(20000ms);
 
       // do random move
       move(qcore::Direction::Down) or move(qcore::Direction::Left) or move(qcore::Direction::Right) or move(qcore::Direction::Up);
